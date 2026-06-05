@@ -1,0 +1,20 @@
+{
+  "name": "bookprowlar",
+  "version": "1.0.0",
+  "description": "Discord bot + web UI for tracking author/series releases across multiple book providers.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "node-cron": "^4.2.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "discordToken": "",
+    "guildId": "",
+    "notificationChannelId": "",
+    "pollMinutes": 60,
+    "providerConfig": {
+      "hardcoverApiToken": "",
+      "googleBooksApiKey": "",
+      "goodreadsEnabled": true
+    }
+  },
+  "follows": [],
+  "sentReleaseIds": {},
+  "lastScan": null
+}

@@ -1,0 +1,245 @@
+:root {
+  --bg: #f5efe6;
+  --bg-2: #ede1d1;
+  --card: #fff9f1;
+  --ink: #2f1f13;
+  --accent: #c44536;
+  --accent-2: #1d7874;
+  --line: #d5bfa5;
+  --shadow: 0 20px 50px rgba(47, 31, 19, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 15%, #fff6ea 0%, var(--bg) 42%, var(--bg-2) 100%);
+  min-height: 100vh;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image: radial-gradient(rgba(47, 31, 19, 0.08) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.layout {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 1.5rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: linear-gradient(170deg, #fffdf9 0%, var(--card) 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: -70px;
+  top: -120px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, rgba(196, 69, 54, 0.2), rgba(29, 120, 116, 0.12), rgba(196, 69, 54, 0.2));
+}
+
+.kicker {
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--accent-2);
+}
+
+h1,
+h2 {
+  margin: 0 0 0.5rem;
+  font-family: "Alegreya", serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 60ch;
+}
+
+.status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.status-row .label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #7f6046;
+}
+
+.status-row p {
+  margin: 0.1rem 0 0;
+  font-weight: 700;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+input,
+select,
+button {
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+
+input,
+select {
+  background: #fff;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: linear-gradient(120deg, var(--accent), #d97a33);
+  color: #fff;
+  font-weight: 700;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(196, 69, 54, 0.35);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  grid-column: 1 / -1;
+}
+
+.chips {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.chips button {
+  background: var(--accent-2);
+  box-shadow: none;
+}
+
+.follow-form {
+  display: grid;
+  grid-template-columns: 1fr 180px 160px;
+  gap: 0.6rem;
+}
+
+.follow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.follow-list li {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.follow-list small {
+  color: #7d5e45;
+}
+
+.follow-list .remove {
+  background: #7a2e23;
+}
+
+pre {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.8rem;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: reveal 460ms ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .layout {
+    width: calc(100% - 1rem);
+    margin-top: 0.5rem;
+  }
+
+  .follow-form {
+    grid-template-columns: 1fr;
+  }
+
+  .actions button,
+  .follow-form button {
+    width: 100%;
+  }
+}

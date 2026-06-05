@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookProwlar Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <main class="layout">
+      <section class="hero card reveal">
+        <p class="kicker">Discord Release Intelligence</p>
+        <h1>BookProwlar</h1>
+        <p class="subtitle">Track authors and book or audiobook series. Get release drops sent to your Discord channel.</p>
+        <div class="status-row">
+          <div>
+            <span class="label">Discord</span>
+            <p id="discordStatus">Unknown</p>
+          </div>
+          <div>
+            <span class="label">Last Scan</span>
+            <p id="lastScan">Never</p>
+          </div>
+          <div>
+            <span class="label">Follows</span>
+            <p id="followCount">0</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal" style="--delay: 100ms">
+        <h2>Bot Settings</h2>
+        <form id="settingsForm" class="grid-form">
+          <label>
+            Discord Bot Token
+            <input id="discordToken" type="password" placeholder="Paste bot token" />
+          </label>
+          <label>
+            Guild (Server) ID
+            <input id="guildId" type="text" placeholder="Discord guild ID" />
+          </label>
+          <label>
+            Notification Channel ID
+            <input id="notificationChannelId" type="text" placeholder="Discord text channel ID" />
+          </label>
+          <label>
+            Poll Minutes
+            <input id="pollMinutes" type="number" min="5" step="1" />
+          </label>
+          <label>
+            Hardcover API Token
+            <input id="hardcoverApiToken" type="password" placeholder="Optional" />
+          </label>
+          <label>
+            Google Books API Key
+            <input id="googleBooksApiKey" type="password" placeholder="Optional" />
+          </label>
+          <label class="checkbox">
+            <input id="goodreadsEnabled" type="checkbox" />
+            Enable Goodreads best-effort scraping
+          </label>
+          <div class="actions">
+            <button type="submit">Save Settings</button>
+            <button type="button" id="fetchChannels">Fetch Channels</button>
+            <button type="button" id="testNotification">Test Notification</button>
+            <button type="button" id="runScan">Run Scan Now</button>
+            <button type="button" id="clearSecrets">Clear Saved Secrets</button>
+          </div>
+        </form>
+        <div id="channels" class="chips"></div>
+      </section>
+
+      <section class="card reveal" style="--delay: 200ms">
+        <h2>Follow Author or Series</h2>
+        <form id="followForm" class="follow-form">
+          <input id="followName" type="text" placeholder="Ex: Brandon Sanderson or The Expanse" required />
+          <select id="followType">
+            <option value="author">Author</option>
+            <option value="series">Series / Audiobook Series</option>
+          </select>
+          <button type="submit">Add Follow</button>
+        </form>
+        <ul id="followList" class="follow-list"></ul>
+      </section>
+
+      <section class="card reveal" style="--delay: 300ms">
+        <h2>Activity</h2>
+        <pre id="activityLog">No activity yet.</pre>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
